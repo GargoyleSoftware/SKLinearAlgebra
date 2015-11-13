@@ -160,9 +160,9 @@ class Matrix4Tests: XCTestCase {
     func testSubscript() {
         let m = SCNMatrix4MakeColumns(
             SCNVector4(x: 1, y: 2, z: 3, w: 4),
-            SCNVector4(x: 5, y: 6, z: 7, w: 8),
-            SCNVector4(x: 2, y: 6, z: 4, w: 8),
-            SCNVector4(x: 3, y: 1, z: 1, w: 2))
+            y: SCNVector4(x: 5, y: 6, z: 7, w: 8),
+            z: SCNVector4(x: 2, y: 6, z: 4, w: 8),
+            w: SCNVector4(x: 3, y: 1, z: 1, w: 2))
 
         XCTAssertEqual(m[0, 0], Float(1), "testing subscript")
         XCTAssertEqual(m[3, 2], Float(8), "testing subscript")

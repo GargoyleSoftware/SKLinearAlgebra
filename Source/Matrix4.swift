@@ -323,16 +323,17 @@ public func /=(inout left: SCNMatrix4, right: Int) {
 
 // https://bitbucket.org/eigen/eigen/src/968c30931d04a35c8b02d1bb386e690b45dc275c/Eigen/src/LU/Determinant.h?at=default#cl-75
 private func detHelper(matrix: SCNMatrix4, j: Int, k: Int, m: Int, n: Int) -> Float {
-    return (matrix[j, 0] * matrix[k, 1] - matrix[k, 0] * matrix[j, 1])
-         * (matrix[m, 2] * matrix[n, 3] - matrix[n, 2] * matrix[m, 3])
+    let a = (matrix[j, 0] * matrix[k, 1] - matrix[k, 0] * matrix[j, 1])
+	let b = (matrix[m, 2] * matrix[n, 3] - matrix[n, 2] * matrix[m, 3])
+	return a * b
 }
 public func det(m: SCNMatrix4) -> Float {
-    return detHelper(m, 0, 1, 2, 3)
-        - detHelper(m, 0, 2, 1, 3)
-        + detHelper(m, 0, 3, 1, 2)
-        + detHelper(m, 1, 2, 0, 3)
-        - detHelper(m, 1, 3, 0, 2)
-        + detHelper(m, 2, 3, 0, 1)
+    return detHelper(m, j: 0, k: 1, m: 2, n: 3)
+        - detHelper(m, j: 0, k: 2, m: 1, n: 3)
+        + detHelper(m, j: 0, k: 3, m: 1, n: 2)
+        + detHelper(m, j: 1, k: 2, m: 0, n: 3)
+        - detHelper(m, j: 1, k: 3, m: 0, n: 2)
+        + detHelper(m, j: 2, k: 3, m: 0, n: 1)
 }
 
 public func transpose(m: SCNMatrix4) -> SCNMatrix4 {

@@ -20,7 +20,7 @@ public protocol Comparable {
     func !~=(lhs: Self, rhs: Self) -> Bool
 }
 
-public protocol Vector: Equatable, Printable, Copyable, Comparable {
+public protocol Vector: Equatable, CustomStringConvertible, Copyable, Comparable {
     func +(lhs: Self, rhs: Self) -> Self
     func +=(inout lhs: Self, rhs: Self)
     func -(lhs: Self, rhs: Self) -> Self
@@ -43,7 +43,7 @@ public protocol Vector: Equatable, Printable, Copyable, Comparable {
     func ×(lhs: Self, rhs: Self) -> Self
 }
 
-public protocol Matrix: Equatable, Printable, Copyable, Comparable {
+public protocol Matrix: Equatable, CustomStringConvertible, Copyable, Comparable {
     func *(lhs: Float, rhs: Self) -> Self
     func *(lhs: Self, rhs: Float) -> Self
     func *=(inout lhs: Self, rhs: Float)

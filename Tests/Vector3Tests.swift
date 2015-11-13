@@ -87,8 +87,8 @@ class Vector3Tests: XCTestCase {
         XCTAssertEqual(a × b, resultab, "Cross product successful")
         XCTAssertEqual(b × a, resultba, "Cross product successful")
 
-        XCTAssertEqual(cross(a, b), resultab, "Cross product convenience method successful")
-        XCTAssertEqual(cross(b, a), resultba, "Cross product convenience method successful")
+        XCTAssertEqual(cross(a, b: b), resultab, "Cross product convenience method successful")
+        XCTAssertEqual(cross(b, b: a), resultba, "Cross product convenience method successful")
 
         let d = SCNVector3(x: 3, y: -3, z: -1)
         let e = SCNVector3(x: -12, y: 12, z: 4)

@@ -82,7 +82,7 @@ class Vector4Tests: XCTestCase {
         let b = SCNVector4(x: 2, y: 3, z: 1, w: 0)
         let result: Float = 2
 
-        let values = map(0...1000){ _ in
+        let values = (0...1000).map{ _ in
             (
                 SCNVector4(
                     x: Float(arc4random()),
@@ -114,8 +114,8 @@ class Vector4Tests: XCTestCase {
         XCTAssertEqual(a × b, resultab, "Cross product successful")
         XCTAssertEqual(b × a, resultba, "Cross product successful")
 
-        XCTAssertEqual(cross(a, b), resultab, "Cross product convenience method successful")
-        XCTAssertEqual(cross(b, a), resultba, "Cross product convenience method successful")
+        XCTAssertEqual(cross(a, b: b), resultab, "Cross product convenience method successful")
+        XCTAssertEqual(cross(b, b: a), resultba, "Cross product convenience method successful")
 
         let d = SCNVector4(x: 3, y: -3, z: -1, w: 0)
         let e = SCNVector4(x: -12, y: 12, z: 4, w: 0)
