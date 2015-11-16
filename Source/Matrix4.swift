@@ -269,6 +269,13 @@ public func *(left: SCNMatrix4, right: SCNVector3) -> SCNVector3 {
     return (left * right.to4(0)).to3()
 }
 
+// Matrix matrix multiplication
+
+public func *(left: SCNMatrix4, right: SCNMatrix4) -> SCNMatrix4 {
+	return SCNMatrix4Mult(left, right)
+}
+
+
 // Scalar multiplication
 
 public func *(left: SCNMatrix4, right: Float) -> SCNMatrix4 {
