@@ -9,7 +9,7 @@
 import Foundation
 import SceneKit
 
-extension SCNVector4: Vector {
+extension SCNVector4: SKVector {
     public init(_ array: [Float]) {
         assert(array.count == 4)
 

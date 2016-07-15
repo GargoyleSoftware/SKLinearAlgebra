@@ -20,7 +20,7 @@ public protocol Comparable {
     func !~=(lhs: Self, rhs: Self) -> Bool
 }
 
-public protocol Vector: Equatable, CustomStringConvertible, Copyable, Comparable {
+public protocol SKVector: Equatable, CustomStringConvertible, Copyable, Comparable {
     func +(lhs: Self, rhs: Self) -> Self
     func +=(inout lhs: Self, rhs: Self)
     func -(lhs: Self, rhs: Self) -> Self
@@ -43,7 +43,7 @@ public protocol Vector: Equatable, CustomStringConvertible, Copyable, Comparable
     func ×(lhs: Self, rhs: Self) -> Self
 }
 
-public protocol Matrix: Equatable, CustomStringConvertible, Copyable, Comparable {
+public protocol SKMatrix: Equatable, CustomStringConvertible, Copyable, Comparable {
     func *(lhs: Float, rhs: Self) -> Self
     func *(lhs: Self, rhs: Float) -> Self
     func *=(inout lhs: Self, rhs: Float)
@@ -63,15 +63,15 @@ infix operator ~= { } // Equivalent
 
 infix operator !~= { } // Not equivalent
 
-public func cross<T:Vector> (a: T, b: T) -> T {
+public func cross<T:SKVector> (a: T, b: T) -> T {
     return a × b
 }
 
-public func magnitude<T: Vector> (vec: T) -> Float {
+public func magnitude<T: SKVector> (vec: T) -> Float {
     return sqrt(vec * vec)
 }
 
-public func normalize<T: Vector> (vec: T) -> T {
+public func normalize<T: SKVector> (vec: T) -> T {
     let vmag = magnitude(vec)
     if vmag == 0 {
         fatalError("Zero vector provided to normalize")
@@ -79,7 +79,7 @@ public func normalize<T: Vector> (vec: T) -> T {
     return vec / vmag
 }
 
-public func angle<T:Vector> (left: T, right: T) -> Float {
+public func angle<T:SKVector> (left: T, right: T) -> Float {
     let ml = magnitude(left)
     let mr = magnitude(right)
     if ml == 0 || mr == 0 {
@@ -99,7 +99,7 @@ public func angle<T:Vector> (left: T, right: T) -> Float {
  *            { | /
  *
  */
-public func component<T:Vector> (a: T, b: T) -> Float {
+public func component<T:SKVector> (a: T, b: T) -> Float {
     let bmag = magnitude(b)
     if bmag == 0 {
         fatalError("Zero vector provided to component")
@@ -109,7 +109,7 @@ public func component<T:Vector> (a: T, b: T) -> Float {
 
 /* proj_{b} a 
  */
-public func projection<T:Vector> (a: T, b: T) -> T {
+public func projection<T:SKVector> (a: T, b: T) -> T {
     let magb = magnitude(b)
     if magb == 0 {
         fatalError("Zero vector provided to projection")

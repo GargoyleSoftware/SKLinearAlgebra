@@ -10,7 +10,7 @@ import Accelerate
 import Foundation
 import SceneKit
 
-extension SCNMatrix4: Matrix {
+extension SCNMatrix4: SKMatrix {
     public init(_ contents: [[Float]]) {
         assert(contents.count == 4 && contents[0].count == 4)
 
@@ -353,8 +353,6 @@ public func transpose(m: SCNMatrix4) -> SCNMatrix4 {
 
 public func inverse(m: SCNMatrix4) -> SCNMatrix4 {
     // https://github.com/mattt/Surge/
-
-    var results = [Float](count: 16, repeatedValue: 0.0)
 
     var grid = m.linearFloatArray
 
